@@ -5,38 +5,82 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.pageturner.controller.ReservaController"
-      spacing="10" style="-fx-padding: 10;">
+      spacing="15" style="-fx-padding: 15;">
 
     <Label text="Gestión de Reservas"
            style="-fx-font-size: 20px;" />
 
-    <!-- FORMULARIO -->
-    <HBox spacing="10">
+    <!-- 🔹 BOTÓN -->
+    <Button text="+ Registrar Reserva"
+            onAction="#mostrarFormulario"
+            styleClass="primary-button"/>
 
-        <ComboBox fx:id="cbCliente" promptText="Seleccionar Cliente" prefWidth="200"/>
-        <ComboBox fx:id="cbLibro" promptText="Libro sin stock" prefWidth="200"/>
+    <!-- 🔹 FORMULARIO -->
+    <VBox fx:id="formularioBox"
+          spacing="10"
+          visible="false"
+          managed="false"
+          styleClass="form-card">
 
-        <Button text="Registrar Reserva" onAction="#registrarReserva"/>
-    </HBox>
+        <Label text="Registrar Reserva" styleClass="form-title"/>
 
-    <!-- TABLA -->
+        <GridPane hgap="10" vgap="10">
+
+            <Label text="Cliente:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="cbCliente"
+                      GridPane.rowIndex="0" GridPane.columnIndex="1"
+                      prefWidth="180"/>
+
+            <Label text="Libro:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <ComboBox fx:id="cbLibro"
+                      GridPane.rowIndex="0" GridPane.columnIndex="3"
+                      prefWidth="180"/>
+
+        </GridPane>
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button text="Cancelar"
+                    onAction="#ocultarFormulario"
+                    styleClass="secondary-button"/>
+
+            <Button text="Guardar"
+                    onAction="#registrarReserva"
+                    styleClass="primary-button"/>
+        </HBox>
+
+    </VBox>
+
+    <!-- 🔹 TABLA -->
     <TableView fx:id="tablaReservas">
 
         <columns>
-            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
-            <TableColumn fx:id="colCliente" text="Cliente" prefWidth="150"/>
-            <TableColumn fx:id="colLibro" text="Libro" prefWidth="150"/>
-            <TableColumn fx:id="colEstado" text="Estado" prefWidth="150"/>
-            <TableColumn fx:id="colFecha" text="Fecha" prefWidth="180"/>
+            <TableColumn fx:id="colId" text="ID"/>
+            <TableColumn fx:id="colCliente" text="Cliente"/>
+            <TableColumn fx:id="colLibro" text="Libro"/>
+            <TableColumn fx:id="colEstado" text="Estado"/>
+            <TableColumn fx:id="colFecha" text="Fecha"/>
         </columns>
 
     </TableView>
 
-    <!-- ACCIONES -->
-    <HBox spacing="10">
-        <Button fx:id="btnHabilitada" text="Marcar como Habilitada" onAction="#marcarHabilitada"/>
-        <Button fx:id="btnCompletada" text="Marcar como Completada" onAction="#marcarCompletada"/>
-        <Button fx:id="btnCancelar" text="Cancelar" onAction="#cancelarReserva"/>
+    <!-- 🔹 ACCIONES -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+
+        <Button fx:id="btnHabilitada"
+                text="Habilitar"
+                onAction="#marcarHabilitada"
+                styleClass="primary-button"/>
+
+        <Button fx:id="btnCompletada"
+                text="Completar"
+                onAction="#marcarCompletada"
+                styleClass="primary-button"/>
+
+        <Button fx:id="btnCancelar"
+                text="Cancelar"
+                onAction="#cancelarReserva"
+                styleClass="secondary-button"/>
+
     </HBox>
 
 </VBox>

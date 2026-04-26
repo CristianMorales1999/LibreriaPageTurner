@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.beans.property.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 
 public class ReservaController {
 
@@ -26,12 +27,27 @@ public class ReservaController {
     @FXML private Button btnCompletada;
     @FXML private Button btnCancelar;
 
+    @FXML private VBox formularioBox;
+
     private final ClienteDAO clienteDAO = new ClienteDAO();
     private final LibroDAO libroDAO = new LibroDAO();
     private final ReservaDAO reservaDAO = new ReservaDAO();
     private final ReservaService reservaService = new ReservaService();
 
     private final ObservableList<Reserva> lista = FXCollections.observableArrayList();
+
+
+    @FXML
+    private void mostrarFormulario() {
+        formularioBox.setVisible(true);
+        formularioBox.setManaged(true);
+    }
+
+    @FXML
+    private void ocultarFormulario() {
+        formularioBox.setVisible(false);
+        formularioBox.setManaged(false);
+    }
 
     @FXML
     public void initialize() {
@@ -141,6 +157,7 @@ public class ReservaController {
             limpiar();
             cargarReservas();
             cargarCombos();
+            ocultarFormulario();
 
         } catch (Exception e) {
             mostrarError(e.getMessage());
