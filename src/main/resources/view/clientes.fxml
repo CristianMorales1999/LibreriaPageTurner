@@ -27,17 +27,53 @@
                 </columns>
             </TableView>
 
-            <!-- BOTÓN -->
-            <Button text="Agregar Cliente" onAction="#mostrarFormulario" styleClass="sidebar-button"/>
+            <VBox spacing="15">
 
-            <!-- FORMULARIO -->
-            <VBox fx:id="formulario" spacing="5" visible="false">
-                <TextField fx:id="txtNombre" promptText="Nombre"/>
-                <TextField fx:id="txtDni" promptText="DNI"/>
-                <TextField fx:id="txtCorreo" promptText="Correo"/>
-                <TextField fx:id="txtCelular" promptText="Celular"/>
+                <!-- 🔹 BOTÓN -->
+                <Button text="+ Agregar Cliente"
+                        onAction="#mostrarFormulario"
+                        styleClass="primary-button"/>
 
-                <Button text="Guardar" onAction="#guardarCliente" styleClass="sidebar-button"/>
+                <!-- 🔹 FORMULARIO -->
+                <VBox fx:id="formularioBox"
+                      spacing="10"
+                      visible="false"
+                      managed="false"
+                      styleClass="form-card">
+
+                    <Label text="Nuevo Cliente" styleClass="form-title"/>
+
+                    <GridPane hgap="10" vgap="10">
+
+                        <!-- FILA 1 -->
+                        <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="DNI:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                        <TextField fx:id="txtDni" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                        <!-- FILA 2 -->
+                        <Label text="Correo:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtCorreo" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Celular:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                        <TextField fx:id="txtCelular" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                    </GridPane>
+
+                    <!-- 🔹 BOTONES -->
+                    <HBox spacing="10" alignment="CENTER_RIGHT">
+                        <Button text="Cancelar"
+                                onAction="#ocultarFormulario"
+                                styleClass="secondary-button"/>
+
+                        <Button text="Guardar"
+                                onAction="#guardarCliente"
+                                styleClass="primary-button"/>
+                    </HBox>
+
+                </VBox>
+
             </VBox>
 
             <!-- MÉTRICAS -->

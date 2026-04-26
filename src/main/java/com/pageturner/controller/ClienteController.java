@@ -22,7 +22,7 @@ public class ClienteController {
     @FXML private TableColumn<Cliente, String> colCelular;
 
     // 🔹 Formulario
-    @FXML private VBox formulario;
+    @FXML private VBox formularioBox;
     @FXML private TextField txtNombre;
     @FXML private TextField txtDni;
     @FXML private TextField txtCorreo;
@@ -37,6 +37,18 @@ public class ClienteController {
     private final ReservaDAO reservaDAO = new ReservaDAO();
 
     private final ObservableList<Cliente> listaClientes = FXCollections.observableArrayList();
+
+    @FXML
+    private void mostrarFormulario() {
+        formularioBox.setVisible(true);
+        formularioBox.setManaged(true);
+    }
+
+    @FXML
+    private void ocultarFormulario() {
+        formularioBox.setVisible(false);
+        formularioBox.setManaged(false);
+    }
 
     @FXML
     public void initialize() {
@@ -66,10 +78,6 @@ public class ClienteController {
         tablaClientes.setItems(listaClientes);
     }
 
-    @FXML
-    private void mostrarFormulario() {
-        formulario.setVisible(!formulario.isVisible());
-    }
 
     @FXML
     private void guardarCliente() {
@@ -83,8 +91,9 @@ public class ClienteController {
 
             clienteDAO.guardar(cliente);
 
-            limpiarFormulario();
             cargarClientes();
+            limpiarFormulario();
+            ocultarFormulario();
 
         } catch (Exception e) {
             mostrarError(e.getMessage());
