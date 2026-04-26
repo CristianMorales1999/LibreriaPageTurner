@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 
 public class VentaController {
 
@@ -26,6 +27,9 @@ public class VentaController {
     @FXML private TableColumn<Venta, String> colFecha;
     @FXML private TableColumn<Venta, Double> colTotal;
 
+    @FXML private VBox formularioBox;
+    @FXML private Label lblStock;
+
     private final ClienteDAO clienteDAO = new ClienteDAO();
     private final LibroDAO libroDAO = new LibroDAO();
     private final VentaDAO ventaDAO = new VentaDAO();
@@ -40,6 +44,37 @@ public class VentaController {
         cargarCombos();
         configurarTabla();
         cargarVentas();
+
+        cbLibro.setOnAction(e -> {
+            Libro libro = cbLibro.getValue();
+            if (libro != null) {
+                lblStock.setText(String.valueOf(libro.getStock()));
+            }
+        });
+
+        txtCantidad.textProperty().addListener((obs, oldVal, newVal) -> {
+            try {
+                int cantidad = Integer.parseInt(newVal);
+                Libro libro = cbLibro.getValue();
+
+                if (libro != null && cantidad > libro.getStock()) {
+                    txtCantidad.setText(oldVal);
+                }
+
+            } catch (NumberFormatException ignored) {}
+        });
+    }
+
+    @FXML
+    private void mostrarFormulario() {
+        formularioBox.setVisible(true);
+        formularioBox.setManaged(true);
+    }
+
+    @FXML
+    private void ocultarFormulario() {
+        formularioBox.setVisible(false);
+        formularioBox.setManaged(false);
     }
 
     private void cargarCombos() {
@@ -123,6 +158,7 @@ public class VentaController {
             limpiarFormulario();
             cargarVentas();
             cargarCombos(); // IMPORTANTE
+            ocultarFormulario();
 
         } catch (Exception e) {
             mostrarError(e.getMessage());
@@ -133,6 +169,7 @@ public class VentaController {
         cbCliente.setValue(null);
         cbLibro.setValue(null);
         txtCantidad.clear();
+        lblStock.setText("");
     }
 
     private void mostrarError(String msg) {
