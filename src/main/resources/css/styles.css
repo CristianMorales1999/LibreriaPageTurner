@@ -63,3 +63,42 @@
     -fx-font-size: 14px;
     -fx-font-weight: bold;
 }
+
+
+/* 🔹 FORM CARD */
+.form-card {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0, 0, 3);
+}
+
+/* 🔹 TÍTULO */
+.form-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* 🔹 INPUTS */
+.text-field {
+    -fx-pref-width: 160;
+    -fx-background-radius: 8;
+}
+
+/* 🔹 BOTÓN PRINCIPAL */
+.primary-button {
+    -fx-background-color: #3498DB;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+}
+
+/* 🔹 BOTÓN SECUNDARIO */
+.secondary-button {
+    -fx-background-color: #BDC3C7;
+    -fx-text-fill: black;
+    -fx-background-radius: 8;
+}
+
+.error {
+    -fx-border-color: red;
+}

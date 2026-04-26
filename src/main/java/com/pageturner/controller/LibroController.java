@@ -3,12 +3,14 @@ package com.pageturner.controller;
 import com.pageturner.dao.LibroDAO;
 import com.pageturner.dao.VentaDAO;
 import com.pageturner.model.Libro;
+import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Duration;
 
 public class LibroController {
 
@@ -35,6 +37,36 @@ public class LibroController {
     private final ObservableList<Libro> listaLibros = FXCollections.observableArrayList();
 
     private final VentaDAO ventaDAO = new VentaDAO();
+
+    @FXML
+    private VBox formularioBox;
+
+    @FXML
+    private void mostrarFormulario() {
+        formularioBox.setVisible(true);
+        formularioBox.setManaged(true);
+
+        // 🔥 Animación
+        formularioBox.setOpacity(0);
+
+        FadeTransition ft = new FadeTransition(Duration.millis(300), formularioBox);
+        ft.setToValue(1);
+        ft.play();
+    }
+
+    @FXML
+    private void ocultarFormulario() {
+
+        FadeTransition ft = new FadeTransition(Duration.millis(200), formularioBox);
+        ft.setToValue(0);
+
+        ft.setOnFinished(e -> {
+            formularioBox.setVisible(false);
+            formularioBox.setManaged(false);
+        });
+
+        ft.play();
+    }
 
     @FXML
     public void initialize() {
@@ -65,12 +97,6 @@ public class LibroController {
         tablaLibros.setItems(listaLibros);
     }
 
-    // 🔹 Mostrar formulario
-    @FXML
-    private void mostrarFormulario() {
-        formulario.setVisible(!formulario.isVisible());
-    }
-
     // 🔹 Guardar libro
     @FXML
     private void guardarLibro() {
@@ -87,6 +113,7 @@ public class LibroController {
 
             limpiarFormulario();
             cargarLibros();
+            ocultarFormulario();
 
         } catch (Exception e) {
             //Personalizar mensajes de error (FALTA)

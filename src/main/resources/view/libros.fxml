@@ -27,18 +27,54 @@
                 </columns>
             </TableView>
 
-            <!-- BOTÓN -->
-            <Button text="Agregar Libro" onAction="#mostrarFormulario" styleClass="sidebar-button"/>
+            <VBox spacing="15">
 
-            <!-- FORMULARIO -->
-            <VBox fx:id="formulario" spacing="5" visible="false">
-                <TextField fx:id="txtTitulo" promptText="Título"/>
-                <TextField fx:id="txtAutor" promptText="Autor"/>
-                <TextField fx:id="txtISBN" promptText="ISBN"/>
-                <TextField fx:id="txtPrecio" promptText="Precio"/>
-                <TextField fx:id="txtStock" promptText="Stock"/>
+                <!-- BOTÓN -->
+                <Button text="+ Agregar Libro"
+                        onAction="#mostrarFormulario"
+                        styleClass="primary-button"/>
 
-                <Button text="Guardar" onAction="#guardarLibro" styleClass="sidebar-button"/>
+                <!-- FORMULARIO -->
+                <VBox fx:id="formularioBox"
+                      spacing="10"
+                      visible="false"
+                      managed="false"
+                      styleClass="form-card">
+
+                    <Label text="Nuevo Libro" styleClass="form-title"/>
+
+                    <GridPane hgap="10" vgap="10">
+
+                        <Label text="Título:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtTitulo" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Autor:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtAutor" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="ISBN:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtISBN" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                        <Label text="Precio:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                        <TextField fx:id="txtPrecio" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                        <Label text="Stock:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                        <TextField fx:id="txtStock" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                    </GridPane>
+
+                    <!-- BOTONES -->
+                    <HBox spacing="10" alignment="CENTER_RIGHT">
+                        <Button text="Cancelar"
+                                onAction="#ocultarFormulario"
+                                styleClass="secondary-button"/>
+
+                        <Button text="Guardar"
+                                onAction="#guardarLibro"
+                                styleClass="primary-button"/>
+                    </HBox>
+
+                </VBox>
+
             </VBox>
 
             <VBox spacing="5" style="-fx-padding: 10;">
