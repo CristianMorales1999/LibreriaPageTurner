@@ -5,7 +5,9 @@ import com.pageturner.model.*;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class VentaDAO {
 
@@ -176,5 +178,31 @@ public class VentaDAO {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public Map<String, Integer> ventasPorMes() {
+        Map<String, Integer> datos = new LinkedHashMap<>();
+
+        String sql = """
+            SELECT DATE_FORMAT(fecha, '%Y-%m') AS mes,
+                   SUM(cantidad) AS total
+            FROM ventas
+            GROUP BY mes
+            ORDER BY mes
+        """;
+
+        try (Connection conn = ConexionDB.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                datos.put(rs.getString("mes"), rs.getInt("total"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return datos;
     }
 }

@@ -53,3 +53,8 @@
     -fx-font-weight: bold;
 }
 
+.chart {
+    -fx-background-color: white;
+    -fx-padding: 10;
+    -fx-background-radius: 10;
+}

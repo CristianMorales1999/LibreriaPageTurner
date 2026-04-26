@@ -35,12 +35,15 @@ public class DashboardController {
     private void cargarGrafico() {
 
         XYChart.Series<String, Number> serie = new XYChart.Series<>();
-        serie.setName("Ventas");
+        serie.setName("Ventas por mes");
 
-        // 🔹 Datos simples (puedes mejorar luego)
-        serie.getData().add(new XYChart.Data<>("Ventas", ventaDAO.totalVentas()));
-        serie.getData().add(new XYChart.Data<>("Reservas", reservaDAO.totalReservas()));
+        var datos = ventaDAO.ventasPorMes();
 
+        for (var entry : datos.entrySet()) {
+            serie.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+        }
+
+        graficoVentas.getData().clear();
         graficoVentas.getData().add(serie);
     }
 }
