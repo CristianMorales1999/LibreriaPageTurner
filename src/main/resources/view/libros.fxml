@@ -85,11 +85,16 @@
             </VBox>
 
 
-            <VBox spacing="5" style="-fx-padding: 10;">
-                <Label text="Libro seleccionado:" style="-fx-font-weight: bold;"/>
+            <!-- 🔹 MÉTRICAS -->
+            <VBox spacing="8"
+                  style="-fx-padding: 10;"
+                  styleClass="form-card">
 
-                <Label fx:id="lblVentas" text="Ventas: 0"/>
-                <Label fx:id="lblIngresos" text="Ingresos: S/ 0.00"/>
+                <Label text="Detalle del Libro" styleClass="form-title"/>
+
+                <Label fx:id="lblVentas" text="Ejemplares vendidos: 0"/>
+                <Label fx:id="lblIngresos" text="Ingresos generados: S/ 0.00"/>
+
             </VBox>
 
         </VBox>
