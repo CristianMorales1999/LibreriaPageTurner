@@ -30,46 +30,43 @@ public class MainController {
             e.printStackTrace();
         }
     }
-    private void setActive(Button botonActivo) {
+    private void activarBoton(Button botonActivo) {
+        btnDashboard.getStyleClass().remove("sidebar-button-active");
+        btnLibros.getStyleClass().remove("sidebar-button-active");
+        btnClientes.getStyleClass().remove("sidebar-button-active");
+        btnVentas.getStyleClass().remove("sidebar-button-active");
+        btnReservas.getStyleClass().remove("sidebar-button-active");
 
-        if (btnDashboard != null) btnDashboard.getStyleClass().remove("active");
-        if (btnLibros != null) btnLibros.getStyleClass().remove("active");
-        if (btnClientes != null) btnClientes.getStyleClass().remove("active");
-        if (btnVentas != null) btnVentas.getStyleClass().remove("active");
-        if (btnReservas != null) btnReservas.getStyleClass().remove("active");
-
-        if (botonActivo != null) {
-            botonActivo.getStyleClass().add("active");
-        }
+        botonActivo.getStyleClass().add("sidebar-button-active");
     }
 
     @FXML
     private void irDashboard() {
         cargarVista("/view/dashboard.fxml");
-        setActive(btnDashboard);
+        activarBoton(btnDashboard);
     }
 
     @FXML
     private void irLibros() {
         cargarVista("/view/libros.fxml");
-        setActive(btnLibros);
+        activarBoton(btnLibros);
     }
 
     @FXML
     private void irClientes() {
         cargarVista("/view/clientes.fxml");
-        setActive(btnClientes);
+        activarBoton(btnClientes);
     }
 
     @FXML
     private void irVentas() {
         cargarVista("/view/ventas.fxml");
-        setActive(btnVentas);
+        activarBoton(btnVentas);
     }
 
     @FXML
     private void irReservas() {
         cargarVista("/view/reservas.fxml");
-        setActive(btnReservas);
+        activarBoton(btnReservas);
     }
 }
