@@ -6,81 +6,87 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.pageturner.controller.ClienteController">
 
-    <!-- 🔹 TÍTULO -->
-    <top>
-        <Label text="Gestión de Clientes"
-               style="-fx-font-size: 20px; -fx-padding: 10;" />
-    </top>
-
-    <!-- 🔹 CONTENIDO -->
     <center>
-        <VBox spacing="10" style="-fx-padding: 10;">
+        <VBox spacing="15" style="-fx-padding: 15;">
 
-            <VBox spacing="15">
+            <!-- 🔹 HEADER (MISMO QUE LIBROS) -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
 
-                <!-- 🔹 BOTÓN -->
-                <Button text="+ Agregar Cliente"
+                <VBox>
+                    <Label text="Gestión de Clientes" styleClass="view-title"/>
+                    <Label text="Administra los clientes registrados en el sistema"
+                           styleClass="view-subtitle"/>
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button text="+ Nuevo Cliente"
                         onAction="#mostrarFormulario"
                         styleClass="primary-button"/>
+            </HBox>
 
-                <!-- 🔹 FORMULARIO -->
-                <VBox fx:id="formularioBox"
-                      spacing="10"
-                      visible="false"
-                      managed="false"
-                      styleClass="form-card">
+            <!-- 🔹 TABLA -->
+            <TableView fx:id="tablaClientes"
+                       prefHeight="320"
+                       styleClass="table-view-modern">
 
-                    <Label text="Nuevo Cliente" styleClass="form-title"/>
+                <columns>
+                    <TableColumn fx:id="colId" text="ID"/>
+                    <TableColumn fx:id="colNombre" text="Nombre"/>
+                    <TableColumn fx:id="colDni" text="DNI"/>
+                    <TableColumn fx:id="colCorreo" text="Correo"/>
+                    <TableColumn fx:id="colCelular" text="Celular"/>
+                </columns>
 
-                    <GridPane hgap="10" vgap="10">
+            </TableView>
 
-                        <!-- FILA 1 -->
-                        <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                        <TextField fx:id="txtNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <!-- 🔹 FORMULARIO -->
+            <VBox fx:id="formularioBox"
+                  spacing="15"
+                  visible="false"
+                  managed="false"
+                  styleClass="form-card">
 
-                        <Label text="DNI:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-                        <TextField fx:id="txtDni" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                <Label text="Registrar Cliente" styleClass="form-title"/>
 
-                        <!-- FILA 2 -->
-                        <Label text="Correo:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                        <TextField fx:id="txtCorreo" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <GridPane hgap="15" vgap="15">
 
-                        <Label text="Celular:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-                        <TextField fx:id="txtCelular" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+                    <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-                    </GridPane>
+                    <Label text="DNI:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                    <TextField fx:id="txtDni" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
 
-                    <!-- 🔹 BOTONES -->
-                    <HBox spacing="10" alignment="CENTER_RIGHT">
-                        <Button text="Cancelar"
-                                onAction="#ocultarFormulario"
-                                styleClass="secondary-button"/>
+                    <Label text="Correo:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtCorreo" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-                        <Button text="Guardar"
-                                onAction="#guardarCliente"
-                                styleClass="primary-button"/>
-                    </HBox>
+                    <Label text="Celular:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                    <TextField fx:id="txtCelular" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
 
-                </VBox>
+                </GridPane>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button text="Cancelar"
+                            onAction="#ocultarFormulario"
+                            styleClass="secondary-button"/>
+
+                    <Button text="Guardar"
+                            onAction="#guardarCliente"
+                            styleClass="primary-button"/>
+                </HBox>
 
             </VBox>
 
-            <!-- TABLA -->
-            <TableView fx:id="tablaClientes" prefHeight="300">
-                <columns>
-                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
-                    <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150"/>
-                    <TableColumn fx:id="colDni" text="DNI" prefWidth="120"/>
-                    <TableColumn fx:id="colCorreo" text="Correo" prefWidth="180"/>
-                    <TableColumn fx:id="colCelular" text="Celular" prefWidth="120"/>
-                </columns>
-            </TableView>
+            <!-- 🔹 MÉTRICAS -->
+            <VBox spacing="8"
+                  style="-fx-padding: 10;"
+                  styleClass="form-card">
 
-            <!-- MÉTRICAS -->
-            <VBox spacing="5" style="-fx-padding: 10;">
-                <Label text="Cliente seleccionado:" style="-fx-font-weight: bold;"/>
-                <Label fx:id="lblCompras" text="Compras: 0"/>
-                <Label fx:id="lblReservas" text="Reservas: 0"/>
+                <Label text="Detalle del Cliente" styleClass="form-title"/>
+
+                <Label fx:id="lblCompras" text="Compras realizadas: 0"/>
+                <Label fx:id="lblReservas" text="Reservas activas: 0"/>
+
             </VBox>
 
         </VBox>
