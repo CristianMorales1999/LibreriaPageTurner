@@ -3,73 +3,92 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.pageturner.controller.VentaController"
-      spacing="15" style="-fx-padding: 15;">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.pageturner.controller.VentaController">
 
-    <Label text="Gestión de Ventas"
-           style="-fx-font-size: 20px;" />
+    <center>
+        <VBox spacing="15" style="-fx-padding: 15;">
 
-    <!-- BOTÓN -->
-    <Button text="+ Registrar Venta"
-            onAction="#mostrarFormulario"
-            styleClass="primary-button"/>
+            <!-- 🔹 HEADER -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
 
-    <!-- FORMULARIO -->
-    <VBox fx:id="formularioBox"
-          spacing="10"
-          visible="false"
-          managed="false"
-          styleClass="form-card">
+                <VBox>
+                    <Label text="Gestión de Ventas" styleClass="view-title"/>
+                    <Label text="Registra y consulta las ventas realizadas"
+                           styleClass="view-subtitle"/>
+                </VBox>
 
-        <Label text="Registrar Venta" styleClass="form-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
 
-        <GridPane hgap="10" vgap="10">
+                <Button text="+ Nueva Venta"
+                        onAction="#mostrarFormulario"
+                        styleClass="primary-button"/>
+            </HBox>
 
-            <Label text="Cliente:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <ComboBox fx:id="cbCliente"
-                      GridPane.rowIndex="0" GridPane.columnIndex="1"
-                      prefWidth="180"/>
+            <!-- 🔹 TABLA -->
+            <TableView fx:id="tablaVentas"
+                       prefHeight="320"
+                       styleClass="table-view-modern">
 
-            <Label text="Libro:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-            <ComboBox fx:id="cbLibro"
-                      GridPane.rowIndex="0" GridPane.columnIndex="3"
-                      prefWidth="180"/>
+                <columns>
+                    <TableColumn fx:id="colId" text="ID"/>
+                    <TableColumn fx:id="colCliente" text="Cliente"/>
+                    <TableColumn fx:id="colLibro" text="Libro"/>
+                    <TableColumn fx:id="colCantidad" text="Cantidad"/>
+                    <TableColumn fx:id="colFecha" text="Fecha"/>
+                    <TableColumn fx:id="colTotal" text="Total"/>
+                </columns>
 
-            <Label text="Cantidad:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtCantidad"
-                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            </TableView>
 
-            <Label text="Stock:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-            <Label fx:id="lblStock"
-                   GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            <!-- 🔹 FORMULARIO -->
+            <VBox fx:id="formularioBox"
+                  spacing="15"
+                  visible="false"
+                  managed="false"
+                  styleClass="form-card">
 
-        </GridPane>
+                <Label text="Registrar Venta" styleClass="form-title"/>
 
-        <HBox spacing="10" alignment="CENTER_RIGHT">
-            <Button text="Cancelar"
-                    onAction="#ocultarFormulario"
-                    styleClass="secondary-button"/>
+                <GridPane hgap="15" vgap="15">
 
-            <Button text="Guardar"
-                    onAction="#registrarVenta"
-                    styleClass="primary-button"/>
-        </HBox>
+                    <!-- FILA 1 -->
+                    <Label text="Cliente:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="cbCliente"
+                              GridPane.rowIndex="0" GridPane.columnIndex="1"
+                              prefWidth="180"/>
 
-    </VBox>
+                    <Label text="Libro:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                    <ComboBox fx:id="cbLibro"
+                              GridPane.rowIndex="0" GridPane.columnIndex="3"
+                              prefWidth="180"/>
 
-    <!-- TABLA -->
-    <TableView fx:id="tablaVentas">
+                    <!-- FILA 2 -->
+                    <Label text="Cantidad:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtCantidad"
+                               GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-        <columns>
-            <TableColumn fx:id="colId" text="ID"/>
-            <TableColumn fx:id="colCliente" text="Cliente"/>
-            <TableColumn fx:id="colLibro" text="Libro"/>
-            <TableColumn fx:id="colCantidad" text="Cantidad"/>
-            <TableColumn fx:id="colFecha" text="Fecha"/>
-            <TableColumn fx:id="colTotal" text="Total"/>
-        </columns>
+                    <Label text="Stock disponible:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                    <Label fx:id="lblStock"
+                           GridPane.rowIndex="1" GridPane.columnIndex="3"
+                           style="-fx-font-weight: bold; -fx-text-fill: #27AE60;"/>
 
-    </TableView>
+                </GridPane>
 
-</VBox>
+                <!-- BOTONES -->
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button text="Cancelar"
+                            onAction="#ocultarFormulario"
+                            styleClass="secondary-button"/>
+
+                    <Button text="Guardar"
+                            onAction="#registrarVenta"
+                            styleClass="primary-button"/>
+                </HBox>
+
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>
