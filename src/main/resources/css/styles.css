@@ -58,3 +58,8 @@
     -fx-padding: 10;
     -fx-background-radius: 10;
 }
+
+.chart-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}

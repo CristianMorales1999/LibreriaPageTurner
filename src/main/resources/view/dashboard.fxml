@@ -52,4 +52,28 @@
         </yAxis>
     </LineChart>
 
+    <HBox spacing="20">
+
+        <!-- 🔹 INGRESOS -->
+        <LineChart fx:id="graficoIngresos" prefHeight="300">
+            <xAxis>
+                <CategoryAxis label="Mes"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Ingresos"/>
+            </yAxis>
+        </LineChart>
+
+        <!-- 🔹 TOP LIBROS -->
+        <BarChart fx:id="graficoTopLibros" prefHeight="300">
+            <xAxis>
+                <CategoryAxis label="Libro"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Ventas"/>
+            </yAxis>
+        </BarChart>
+
+    </HBox>
+
 </VBox>

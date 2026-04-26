@@ -205,4 +205,59 @@ public class VentaDAO {
 
         return datos;
     }
+
+    public Map<String, Double> ingresosPorMes() {
+        Map<String, Double> datos = new LinkedHashMap<>();
+
+        String sql = """
+        SELECT DATE_FORMAT(v.fecha, '%Y-%m') AS mes,
+               SUM(v.cantidad * l.precio) AS total
+        FROM ventas v
+        JOIN libros l ON v.libro_id = l.id
+        GROUP BY mes
+        ORDER BY mes
+    """;
+
+        try (Connection conn = ConexionDB.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                datos.put(rs.getString("mes"), rs.getDouble("total"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return datos;
+    }
+
+    public Map<String, Integer> topLibrosVendidos() {
+        Map<String, Integer> datos = new LinkedHashMap<>();
+
+        String sql = """
+        SELECT l.titulo, SUM(v.cantidad) AS total
+        FROM ventas v
+        JOIN libros l ON v.libro_id = l.id
+        GROUP BY l.titulo
+        ORDER BY total DESC
+        LIMIT 5
+    """;
+
+        try (Connection conn = ConexionDB.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                datos.put(rs.getString("titulo"), rs.getInt("total"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return datos;
+    }
+
 }
