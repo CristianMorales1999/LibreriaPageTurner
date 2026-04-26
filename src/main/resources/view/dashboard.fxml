@@ -2,32 +2,54 @@
 
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.pageturner.controller.DashboardController"
       spacing="20"
-      style="-fx-padding: 20;">
+      style="-fx-padding: 25; -fx-background-color: #F5F7FA;">
 
-    <Label text="Dashboard"
-           style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+    <!-- 🔹 HEADER -->
+    <VBox spacing="5">
+        <Label text="Dashboard"
+               style="-fx-font-size: 26px; -fx-font-weight: bold;" />
+        <Label text="Resumen general de la librería PageTurner"
+               style="-fx-text-fill: #7F8C8D;" />
+    </VBox>
 
+    <!-- 🔹 CARDS -->
     <HBox spacing="20">
 
-        <VBox style="-fx-background-color: #ECF0F1; -fx-padding: 15;">
-            <Label text="Ventas Totales"/>
-            <Label fx:id="lblVentas" style="-fx-font-size: 18px;"/>
+        <VBox styleClass="card">
+            <Label text="📚 Ventas"/>
+            <Label fx:id="lblVentas" styleClass="card-value"/>
         </VBox>
 
-        <VBox style="-fx-background-color: #ECF0F1; -fx-padding: 15;">
-            <Label text="Reservas Totales"/>
-            <Label fx:id="lblReservas" style="-fx-font-size: 18px;"/>
+        <VBox styleClass="card">
+            <Label text="📝 Reservas"/>
+            <Label fx:id="lblReservas" styleClass="card-value"/>
         </VBox>
 
-        <VBox style="-fx-background-color: #ECF0F1; -fx-padding: 15;">
-            <Label text="Ingresos Totales"/>
-            <Label fx:id="lblIngresos" style="-fx-font-size: 18px;"/>
+        <VBox styleClass="card">
+            <Label text="💰 Ingresos"/>
+            <Label fx:id="lblIngresos" styleClass="card-value"/>
+        </VBox>
+
+        <VBox styleClass="card">
+            <Label text="📦 Libros"/>
+            <Label fx:id="lblLibros" styleClass="card-value"/>
         </VBox>
 
     </HBox>
+
+    <!-- 🔹 GRÁFICO -->
+    <LineChart fx:id="graficoVentas" prefHeight="300">
+        <xAxis>
+            <CategoryAxis label="Ventas"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis label="Cantidad"/>
+        </yAxis>
+    </LineChart>
 
 </VBox>

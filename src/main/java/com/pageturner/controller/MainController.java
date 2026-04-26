@@ -19,7 +19,7 @@ public class MainController {
 
     @FXML
     public void initialize() {
-        irLibros(); // Vista inicial
+        irDashboard(); // Vista inicial
     }
 
     private void cargarVista(String ruta) {

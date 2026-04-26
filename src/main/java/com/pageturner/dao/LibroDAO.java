@@ -162,4 +162,19 @@ public class LibroDAO {
             e.printStackTrace();
         }
     }
+
+    public int totalLibros() {
+        String sql = "SELECT COUNT(*) FROM libros";
+
+        try (Connection conn = ConexionDB.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            if (rs.next()) return rs.getInt(1);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

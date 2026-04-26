@@ -1,3 +1,36 @@
+/* 🔹 CARDS */
+.card {
+    -fx-background-color: white;
+    -fx-padding: 15;
+    -fx-spacing: 5;
+    -fx-pref-width: 180;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
+}
+.card:nth-child(1) { -fx-border-color: #3498DB; }
+.card:nth-child(2) { -fx-border-color: #E67E22; }
+.card:nth-child(3) { -fx-border-color: #27AE60; }
+.card:nth-child(4) { -fx-border-color: #9B59B6; }
+
+.card:hover {
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+
+/* 🔹 VALOR GRANDE */
+.card-value {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+/* 🔹 TIPOGRAFÍA GENERAL */
+.root {
+    -fx-font-family: "Segoe UI";
+}
+
+
+
 .sidebar-button {
     -fx-background-color: #34495E;
     -fx-text-fill: white;
@@ -19,3 +52,4 @@
     -fx-background-color: #3E5870;
     -fx-font-weight: bold;
 }
+
