@@ -6,22 +6,40 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.pageturner.controller.LibroController">
 
-    <!-- 🔹 TOP -->
-    <top>
-        <Label text="Gestión de Libros"
-               style="-fx-font-size: 20px; -fx-padding: 10;" />
-    </top>
-
     <!-- 🔹 CENTER -->
     <center>
-        <VBox spacing="10" style="-fx-padding: 10;">
+        <VBox spacing="15" style="-fx-padding: 15;">
 
-            <VBox spacing="15">
+            <!-- HEADER -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
 
-                <!-- BOTÓN -->
-                <Button text="+ Agregar Libro"
+                <VBox>
+                    <Label text="Gestión de Libros" styleClass="view-title"/>
+                    <Label text="Administra el catálogo de libros disponibles"
+                           styleClass="view-subtitle"/>
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button text="+ Nuevo Libro"
                         onAction="#mostrarFormulario"
                         styleClass="primary-button"/>
+            </HBox>
+
+            <!-- TABLA -->
+            <TableView fx:id="tablaLibros" styleClass="table-view-modern">
+
+                <columns>
+                    <TableColumn fx:id="colId" text="ID"/>
+                    <TableColumn fx:id="colTitulo" text="Título"/>
+                    <TableColumn fx:id="colAutor" text="Autor"/>
+                    <TableColumn fx:id="colPrecio" text="Precio"/>
+                    <TableColumn fx:id="colStock" text="Stock"/>
+                </columns>
+
+            </TableView>
+
+            <VBox spacing="15">
 
                 <!-- FORMULARIO -->
                 <VBox fx:id="formularioBox"
@@ -66,16 +84,6 @@
 
             </VBox>
 
-            <!-- TABLA -->
-            <TableView fx:id="tablaLibros" prefHeight="300">
-                <columns>
-                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
-                    <TableColumn fx:id="colTitulo" text="Título" prefWidth="150"/>
-                    <TableColumn fx:id="colAutor" text="Autor" prefWidth="150"/>
-                    <TableColumn fx:id="colPrecio" text="Precio" prefWidth="100"/>
-                    <TableColumn fx:id="colStock" text="Stock" prefWidth="100"/>
-                </columns>
-            </TableView>
 
             <VBox spacing="5" style="-fx-padding: 10;">
                 <Label text="Libro seleccionado:" style="-fx-font-weight: bold;"/>
