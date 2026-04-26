@@ -12,8 +12,17 @@ public class App extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main.fxml"));
         Scene scene = new Scene(loader.load());
-        stage.setScene(scene);
+
         stage.setTitle("PageTurner");
+        stage.setScene(scene);
+
+        /* 🔥 Tamaño fijo */
+        stage.setWidth(1000);
+        stage.setHeight(600);
+
+        /* 🔥 BLOQUEAR redimension */
+        stage.setResizable(false);
+
         stage.show();
     }
 

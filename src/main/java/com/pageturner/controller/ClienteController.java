@@ -40,6 +40,7 @@ public class ClienteController {
 
     @FXML
     public void initialize() {
+        tablaClientes.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         configurarTabla();
         cargarClientes();
 
@@ -105,7 +106,7 @@ public class ClienteController {
         txtCorreo.clear();
         txtCelular.clear();
     }
-    
+
     private void mostrarError(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");

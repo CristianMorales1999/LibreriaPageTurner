@@ -35,6 +35,8 @@ public class ReservaController {
 
     @FXML
     public void initialize() {
+        tablaReservas.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
         cargarCombos();
         configurarTabla();
         cargarReservas();

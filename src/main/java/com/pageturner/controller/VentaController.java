@@ -35,6 +35,8 @@ public class VentaController {
 
     @FXML
     public void initialize() {
+        tablaVentas.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
         cargarCombos();
         configurarTabla();
         cargarVentas();

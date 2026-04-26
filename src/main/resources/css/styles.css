@@ -13,3 +13,9 @@
     -fx-background-color: #2C3E50;
     -fx-padding: 10;
 }
+
+/* estado activo */
+.sidebar-button.active {
+    -fx-background-color: #3E5870;
+    -fx-font-weight: bold;
+}

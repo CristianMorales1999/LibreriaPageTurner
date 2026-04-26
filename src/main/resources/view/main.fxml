@@ -14,11 +14,11 @@
             <Label text="PageTurner"
                    style="-fx-text-fill: white; -fx-font-size: 18px;" />
 
-            <Button text="Dashboard" onAction="#irDashboard" styleClass="sidebar-button"/>
-            <Button text="Libros" onAction="#irLibros" styleClass="sidebar-button"/>
-            <Button text="Clientes" onAction="#irClientes" styleClass="sidebar-button"/>
-            <Button text="Ventas" onAction="#irVentas" styleClass="sidebar-button"/>
-            <Button text="Reservas" onAction="#irReservas" styleClass="sidebar-button"/>
+            <Button fx:id="btnDashboard" text="Dashboard" onAction="#irDashboard" styleClass="sidebar-button"/>
+            <Button fx:id="btnLibros" text="Libros" onAction="#irLibros" styleClass="sidebar-button"/>
+            <Button fx:id="btnClientes" text="Clientes" onAction="#irClientes" styleClass="sidebar-button"/>
+            <Button fx:id="btnVentas" text="Ventas" onAction="#irVentas" styleClass="sidebar-button"/>
+            <Button fx:id="btnReservas" text="Reservas" onAction="#irReservas" styleClass="sidebar-button"/>
 
         </VBox>
     </left>

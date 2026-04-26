@@ -38,6 +38,8 @@ public class LibroController {
 
     @FXML
     public void initialize() {
+        tablaLibros.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
         configurarTabla();
         cargarLibros();
 
