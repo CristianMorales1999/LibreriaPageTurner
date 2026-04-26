@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.pageturner.controller.VentaController"
+      spacing="10" style="-fx-padding: 10;">
+
+    <Label text="Gestión de Ventas"
+           style="-fx-font-size: 20px;" />
+
+    <!-- FORMULARIO -->
+    <HBox spacing="10">
+
+        <ComboBox fx:id="cbCliente" promptText="Seleccionar Cliente" prefWidth="200"/>
+        <ComboBox fx:id="cbLibro" promptText="Seleccionar Libro" prefWidth="200"/>
+
+        <TextField fx:id="txtCantidad" promptText="Cantidad" prefWidth="100"/>
+
+        <Button text="Registrar Venta" onAction="#registrarVenta"/>
+    </HBox>
+
+    <!-- TABLA -->
+    <TableView fx:id="tablaVentas">
+
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colCliente" text="Cliente" prefWidth="150"/>
+            <TableColumn fx:id="colLibro" text="Libro" prefWidth="150"/>
+            <TableColumn fx:id="colCantidad" text="Cantidad" prefWidth="100"/>
+            <TableColumn fx:id="colFecha" text="Fecha" prefWidth="180"/>
+            <TableColumn fx:id="colTotal" text="Total" prefWidth="100"/>
+        </columns>
+
+    </TableView>
+
+</VBox>

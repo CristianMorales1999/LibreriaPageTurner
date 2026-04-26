@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.pageturner.controller.ClienteController">
+
+    <!-- 🔹 TÍTULO -->
+    <top>
+        <Label text="Gestión de Clientes"
+               style="-fx-font-size: 20px; -fx-padding: 10;" />
+    </top>
+
+    <!-- 🔹 CONTENIDO -->
+    <center>
+        <VBox spacing="10" style="-fx-padding: 10;">
+
+            <!-- TABLA -->
+            <TableView fx:id="tablaClientes" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150"/>
+                    <TableColumn fx:id="colDni" text="DNI" prefWidth="120"/>
+                    <TableColumn fx:id="colCorreo" text="Correo" prefWidth="180"/>
+                    <TableColumn fx:id="colCelular" text="Celular" prefWidth="120"/>
+                </columns>
+            </TableView>
+
+            <!-- BOTÓN -->
+            <Button text="Agregar Cliente" onAction="#mostrarFormulario" styleClass="sidebar-button"/>
+
+            <!-- FORMULARIO -->
+            <VBox fx:id="formulario" spacing="5" visible="false">
+                <TextField fx:id="txtNombre" promptText="Nombre"/>
+                <TextField fx:id="txtDni" promptText="DNI"/>
+                <TextField fx:id="txtCorreo" promptText="Correo"/>
+                <TextField fx:id="txtCelular" promptText="Celular"/>
+
+                <Button text="Guardar" onAction="#guardarCliente" styleClass="sidebar-button"/>
+            </VBox>
+
+            <!-- MÉTRICAS -->
+            <VBox spacing="5" style="-fx-padding: 10;">
+                <Label text="Cliente seleccionado:" style="-fx-font-weight: bold;"/>
+                <Label fx:id="lblCompras" text="Compras: 0"/>
+                <Label fx:id="lblReservas" text="Reservas: 0"/>
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

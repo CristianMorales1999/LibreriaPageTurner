@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.pageturner.controller.DashboardController"
+      spacing="20"
+      style="-fx-padding: 20;">
+
+    <Label text="Dashboard"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <HBox spacing="20">
+
+        <VBox style="-fx-background-color: #ECF0F1; -fx-padding: 15;">
+            <Label text="Ventas Totales"/>
+            <Label fx:id="lblVentas" style="-fx-font-size: 18px;"/>
+        </VBox>
+
+        <VBox style="-fx-background-color: #ECF0F1; -fx-padding: 15;">
+            <Label text="Reservas Totales"/>
+            <Label fx:id="lblReservas" style="-fx-font-size: 18px;"/>
+        </VBox>
+
+        <VBox style="-fx-background-color: #ECF0F1; -fx-padding: 15;">
+            <Label text="Ingresos Totales"/>
+            <Label fx:id="lblIngresos" style="-fx-font-size: 18px;"/>
+        </VBox>
+
+    </HBox>
+
+</VBox>

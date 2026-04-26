@@ -1,0 +1,15 @@
+.sidebar-button {
+    -fx-background-color: #34495E;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-pref-width: 150px;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #3E5870;
+}
+
+.sidebar {
+    -fx-background-color: #2C3E50;
+    -fx-padding: 10;
+}

@@ -9,20 +9,26 @@ public class Venta {
     private Cliente cliente;
     private Libro libro;
 
-    public Venta(int id, int cantidad, Cliente cliente, Libro libro) {
+    public Venta(int id, LocalDateTime fecha, int cantidad, Cliente cliente, Libro libro) {
+        this.id = id;
+        this.fecha = fecha;
+        this.cantidad = cantidad;
+        this.cliente = cliente;
+        this.libro = libro;
+    }
 
+    public Venta(int cantidad, Cliente cliente, Libro libro) {
         if (cantidad <= 0) throw new IllegalArgumentException("Cantidad inválida");
         if (cliente == null || libro == null) throw new IllegalArgumentException("Datos inválidos");
         if (!libro.estaDisponible() || libro.getStock() < cantidad)
             throw new IllegalStateException("No hay stock suficiente");
 
-        this.id = id;
         this.fecha = LocalDateTime.now();
         this.cantidad = cantidad;
         this.cliente = cliente;
         this.libro = libro;
 
-        // Lógica automática
+        // Lógica de negocio
         libro.disminuirStock(cantidad);
         libro.agregarVenta(this);
         cliente.agregarVenta(this);

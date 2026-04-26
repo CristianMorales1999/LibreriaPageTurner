@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.pageturner.controller.ReservaController"
+      spacing="10" style="-fx-padding: 10;">
+
+    <Label text="Gestión de Reservas"
+           style="-fx-font-size: 20px;" />
+
+    <!-- FORMULARIO -->
+    <HBox spacing="10">
+
+        <ComboBox fx:id="cbCliente" promptText="Seleccionar Cliente" prefWidth="200"/>
+        <ComboBox fx:id="cbLibro" promptText="Libro sin stock" prefWidth="200"/>
+
+        <Button text="Registrar Reserva" onAction="#registrarReserva"/>
+    </HBox>
+
+    <!-- TABLA -->
+    <TableView fx:id="tablaReservas">
+
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colCliente" text="Cliente" prefWidth="150"/>
+            <TableColumn fx:id="colLibro" text="Libro" prefWidth="150"/>
+            <TableColumn fx:id="colEstado" text="Estado" prefWidth="150"/>
+            <TableColumn fx:id="colFecha" text="Fecha" prefWidth="180"/>
+        </columns>
+
+    </TableView>
+
+    <!-- ACCIONES -->
+    <HBox spacing="10">
+        <Button fx:id="btnHabilitada" text="Marcar como Habilitada" onAction="#marcarHabilitada"/>
+        <Button fx:id="btnCompletada" text="Marcar como Completada" onAction="#marcarCompletada"/>
+        <Button fx:id="btnCancelar" text="Cancelar" onAction="#cancelarReserva"/>
+    </HBox>
+
+</VBox>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.pageturner.controller.LibroController">
+
+    <!-- 🔹 TOP -->
+    <top>
+        <Label text="Gestión de Libros"
+               style="-fx-font-size: 20px; -fx-padding: 10;" />
+    </top>
+
+    <!-- 🔹 CENTER -->
+    <center>
+        <VBox spacing="10" style="-fx-padding: 10;">
+
+            <!-- TABLA -->
+            <TableView fx:id="tablaLibros" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colTitulo" text="Título" prefWidth="150"/>
+                    <TableColumn fx:id="colAutor" text="Autor" prefWidth="150"/>
+                    <TableColumn fx:id="colPrecio" text="Precio" prefWidth="100"/>
+                    <TableColumn fx:id="colStock" text="Stock" prefWidth="100"/>
+                </columns>
+            </TableView>
+
+            <!-- BOTÓN -->
+            <Button text="Agregar Libro" onAction="#mostrarFormulario" styleClass="sidebar-button"/>
+
+            <!-- FORMULARIO -->
+            <VBox fx:id="formulario" spacing="5" visible="false">
+                <TextField fx:id="txtTitulo" promptText="Título"/>
+                <TextField fx:id="txtAutor" promptText="Autor"/>
+                <TextField fx:id="txtISBN" promptText="ISBN"/>
+                <TextField fx:id="txtPrecio" promptText="Precio"/>
+                <TextField fx:id="txtStock" promptText="Stock"/>
+
+                <Button text="Guardar" onAction="#guardarLibro" styleClass="sidebar-button"/>
+            </VBox>
+
+            <VBox spacing="5" style="-fx-padding: 10;">
+                <Label text="Libro seleccionado:" style="-fx-font-weight: bold;"/>
+
+                <Label fx:id="lblVentas" text="Ventas: 0"/>
+                <Label fx:id="lblIngresos" text="Ingresos: S/ 0.00"/>
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

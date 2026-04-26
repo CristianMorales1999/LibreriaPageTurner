@@ -14,14 +14,55 @@ public class Cliente {
     private List<Venta> ventas;
     private List<Reserva> reservas;
 
+    private void inicializarListas() {
+        this.ventas = new ArrayList<>();
+        this.reservas = new ArrayList<>();
+    }
+
+    private void validarDatos(String nombre, String dni, String correo, String celular) {
+
+        if (nombre == null || nombre.isBlank())
+            throw new IllegalArgumentException("El nombre es obligatorio");
+
+        if (dni == null || dni.isBlank())
+            throw new IllegalArgumentException("El DNI es obligatorio");
+
+        if (!dni.matches("\\d{8}"))
+            throw new IllegalArgumentException("El DNI debe tener 8 dígitos");
+
+        if (correo == null || correo.isBlank())
+            throw new IllegalArgumentException("El correo es obligatorio");
+
+        if (!correo.contains("@"))
+            throw new IllegalArgumentException("Correo inválido");
+
+        if (celular == null || celular.isBlank())
+            throw new IllegalArgumentException("El celular es obligatorio");
+
+        if (!celular.matches("\\d{9}"))
+            throw new IllegalArgumentException("El celular debe tener 9 dígitos");
+    }
+
     public Cliente(int id, String nombre, String dni, String correo, String celular) {
+        validarDatos(nombre, dni, correo, celular);
+
         this.id = id;
         this.nombre = nombre;
         this.dni = dni;
         this.correo = correo;
         this.celular = celular;
-        this.ventas = new ArrayList<>();
-        this.reservas = new ArrayList<>();
+
+        inicializarListas();
+    }
+    public Cliente(String nombre, String dni, String correo, String celular) {
+        validarDatos(nombre, dni, correo, celular);
+
+        this.nombre = nombre;
+        this.dni = dni;
+        this.correo = correo;
+        this.celular = celular;
+
+        inicializarListas();
     }
 
     public double calcularTotalCompras() {
@@ -75,5 +116,5 @@ public class Cliente {
             throw new IllegalArgumentException("Celular inválido");
         this.celular = celular;
     }
-    
+
 }

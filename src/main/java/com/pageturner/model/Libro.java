@@ -15,18 +15,46 @@ public class Libro {
     private List<Venta> ventas;
     private List<Reserva> reservas;
 
-    public Libro(int id, String titulo, String autor, String ISBN, double precio, int stock) {
-        if (precio <= 0) throw new IllegalArgumentException("El precio debe ser mayor a 0");
-        if (stock < 0) throw new IllegalArgumentException("El stock no puede ser negativo");
+    private void inicializarListas() {
+        this.ventas = new ArrayList<>();
+        this.reservas = new ArrayList<>();
+    }
+    private void validarDatos(String titulo, String autor, String ISBN, double precio, int stock) {
 
+        if (titulo == null || titulo.isBlank())
+            throw new IllegalArgumentException("Título obligatorio");
+
+        if (autor == null || autor.isBlank())
+            throw new IllegalArgumentException("Autor obligatorio");
+
+        if (ISBN == null || ISBN.isBlank())
+            throw new IllegalArgumentException("ISBN obligatorio");
+
+        if (precio <= 0)
+            throw new IllegalArgumentException("Precio debe ser mayor a 0");
+
+        if (stock < 0)
+            throw new IllegalArgumentException("Stock no puede ser negativo");
+    }
+
+    public Libro(int id, String titulo, String autor, String ISBN, double precio, int stock) {
+        validarDatos(titulo, autor, ISBN, precio, stock);
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.ISBN = ISBN;
         this.precio = precio;
         this.stock = stock;
-        this.ventas = new ArrayList<>();
-        this.reservas = new ArrayList<>();
+        inicializarListas();
+    }
+    public Libro(String titulo, String autor, String ISBN, double precio, int stock) {
+        validarDatos(titulo, autor, ISBN, precio, stock);
+        this.titulo = titulo;
+        this.autor = autor;
+        this.ISBN = ISBN;
+        this.precio = precio;
+        this.stock = stock;
+        inicializarListas();
     }
 
     public void disminuirStock(int cantidad) {

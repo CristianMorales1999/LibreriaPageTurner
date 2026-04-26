@@ -9,20 +9,34 @@ public class Reserva {
     private Cliente cliente;
     private Libro libro;
 
-    public Reserva(int id, Cliente cliente, Libro libro) {
+    private void validarDatos(Cliente cliente, Libro libro) {
 
-        if (cliente == null || libro == null)
-            throw new IllegalArgumentException("Datos inválidos");
+        if (cliente == null)
+            throw new IllegalArgumentException("Cliente obligatorio");
+
+        if (libro == null)
+            throw new IllegalArgumentException("Libro obligatorio");
 
         if (libro.estaDisponible())
-            throw new IllegalStateException("No se puede reservar un libro con stock disponible");
+            throw new IllegalStateException("No se puede reservar con stock disponible");
+    }
 
+    public Reserva(int id, LocalDateTime fecha, EstadoReserva estado, Cliente cliente, Libro libro) {
         this.id = id;
+        this.fecha = fecha;
+        this.estado = estado;
+        this.cliente = cliente;
+        this.libro = libro;
+    }
+    public Reserva(Cliente cliente, Libro libro) {
+
+        validarDatos(cliente, libro);
         this.fecha = LocalDateTime.now();
         this.estado = EstadoReserva.PENDIENTE;
         this.cliente = cliente;
         this.libro = libro;
 
+        // Lógica de negocio
         libro.agregarReserva(this);
         cliente.agregarReserva(this);
     }
@@ -40,4 +54,6 @@ public class Reserva {
     public int getId() { return id; }
     public LocalDateTime getFecha() { return fecha; }
     public EstadoReserva getEstado() { return estado; }
+    public Cliente getCliente() { return cliente; }
+    public Libro getLibro() { return libro; }
 }
