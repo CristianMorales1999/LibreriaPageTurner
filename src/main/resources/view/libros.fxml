@@ -16,17 +16,6 @@
     <center>
         <VBox spacing="10" style="-fx-padding: 10;">
 
-            <!-- TABLA -->
-            <TableView fx:id="tablaLibros" prefHeight="300">
-                <columns>
-                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
-                    <TableColumn fx:id="colTitulo" text="Título" prefWidth="150"/>
-                    <TableColumn fx:id="colAutor" text="Autor" prefWidth="150"/>
-                    <TableColumn fx:id="colPrecio" text="Precio" prefWidth="100"/>
-                    <TableColumn fx:id="colStock" text="Stock" prefWidth="100"/>
-                </columns>
-            </TableView>
-
             <VBox spacing="15">
 
                 <!-- BOTÓN -->
@@ -76,6 +65,17 @@
                 </VBox>
 
             </VBox>
+
+            <!-- TABLA -->
+            <TableView fx:id="tablaLibros" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colTitulo" text="Título" prefWidth="150"/>
+                    <TableColumn fx:id="colAutor" text="Autor" prefWidth="150"/>
+                    <TableColumn fx:id="colPrecio" text="Precio" prefWidth="100"/>
+                    <TableColumn fx:id="colStock" text="Stock" prefWidth="100"/>
+                </columns>
+            </TableView>
 
             <VBox spacing="5" style="-fx-padding: 10;">
                 <Label text="Libro seleccionado:" style="-fx-font-weight: bold;"/>

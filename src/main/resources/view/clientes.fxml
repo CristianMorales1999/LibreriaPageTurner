@@ -16,17 +16,6 @@
     <center>
         <VBox spacing="10" style="-fx-padding: 10;">
 
-            <!-- TABLA -->
-            <TableView fx:id="tablaClientes" prefHeight="300">
-                <columns>
-                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
-                    <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150"/>
-                    <TableColumn fx:id="colDni" text="DNI" prefWidth="120"/>
-                    <TableColumn fx:id="colCorreo" text="Correo" prefWidth="180"/>
-                    <TableColumn fx:id="colCelular" text="Celular" prefWidth="120"/>
-                </columns>
-            </TableView>
-
             <VBox spacing="15">
 
                 <!-- 🔹 BOTÓN -->
@@ -75,6 +64,17 @@
                 </VBox>
 
             </VBox>
+
+            <!-- TABLA -->
+            <TableView fx:id="tablaClientes" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150"/>
+                    <TableColumn fx:id="colDni" text="DNI" prefWidth="120"/>
+                    <TableColumn fx:id="colCorreo" text="Correo" prefWidth="180"/>
+                    <TableColumn fx:id="colCelular" text="Celular" prefWidth="120"/>
+                </columns>
+            </TableView>
 
             <!-- MÉTRICAS -->
             <VBox spacing="5" style="-fx-padding: 10;">
