@@ -17,8 +17,8 @@ public class App extends Application {
         stage.setScene(scene);
 
         /* 🔥 Tamaño fijo */
-        stage.setWidth(1000);
-        stage.setHeight(600);
+        stage.setWidth(1024);
+        stage.setHeight(768);
 
         /* 🔥 BLOQUEAR redimension */
         stage.setResizable(false);

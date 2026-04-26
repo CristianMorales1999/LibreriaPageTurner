@@ -177,4 +177,24 @@ public class LibroDAO {
         }
         return 0;
     }
+
+    public int obtenerStockPorId(int id) {
+        String sql = "SELECT stock FROM libros WHERE id = ?";
+
+        try (Connection conn = ConexionDB.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("stock");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
 }

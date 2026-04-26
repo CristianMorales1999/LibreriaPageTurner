@@ -32,6 +32,7 @@ public class LibroController {
 
     @FXML private Label lblVentas;
     @FXML private Label lblIngresos;
+    @FXML private Label lblStockDetalle;
 
     private final LibroDAO libroDAO = new LibroDAO();
     private final ObservableList<Libro> listaLibros = FXCollections.observableArrayList();
@@ -139,8 +140,10 @@ public class LibroController {
 
         int ventas = ventaDAO.contarVentasPorLibro(libro.getId());
         double ingresos = ventaDAO.totalIngresosPorLibro(libro.getId());
+        int stock = libroDAO.obtenerStockPorId(libro.getId());
 
-        lblVentas.setText("Ventas: " + ventas);
-        lblIngresos.setText("Ingresos: S/ " + String.format("%.2f", ingresos));
+        lblVentas.setText(String.valueOf(ventas));
+        lblIngresos.setText("S/ " + ingresos);
+        lblStockDetalle.setText(String.valueOf(stock));
     }
 }

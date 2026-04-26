@@ -84,16 +84,38 @@
 
             </VBox>
 
-
             <!-- 🔹 MÉTRICAS -->
-            <VBox spacing="8"
-                  style="-fx-padding: 10;"
-                  styleClass="form-card">
+            <VBox spacing="8" alignment="CENTER" style="-fx-padding: 10;">
 
-                <Label text="Detalle del Libro" styleClass="form-title"/>
+                <Label text="Resumen de Libro"
+                       styleClass="form-title"/>
 
-                <Label fx:id="lblVentas" text="Ejemplares vendidos: 0"/>
-                <Label fx:id="lblIngresos" text="Ingresos generados: S/ 0.00"/>
+                <HBox spacing="15"
+                      alignment="CENTER"
+                      maxWidth="600">
+
+                    <!-- 📦 VENTAS -->
+                    <VBox styleClass="card">
+                        <Label text="📦" style="-fx-font-size: 24px;"/>
+                        <Label text="Vendidos"/>
+                        <Label fx:id="lblVentas" text="0" styleClass="card-value"/>
+                    </VBox>
+
+                    <!-- 💰 INGRESOS -->
+                    <VBox styleClass="card">
+                        <Label text="💰" style="-fx-font-size: 24px;"/>
+                        <Label text="Ingresos"/>
+                        <Label fx:id="lblIngresos" text="S/ 0.00" styleClass="card-value"/>
+                    </VBox>
+
+                    <!-- 📚 STOCK -->
+                    <VBox styleClass="card">
+                        <Label text="📚" style="-fx-font-size: 24px;"/>
+                        <Label text="Stock"/>
+                        <Label fx:id="lblStockDetalle" text="0" styleClass="card-value"/>
+                    </VBox>
+
+                </HBox>
 
             </VBox>
 
